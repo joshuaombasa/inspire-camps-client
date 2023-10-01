@@ -22,6 +22,7 @@ import HostCampDetails from './pages/host/HostCampDetails'
 import SelectedVanDetails from './components/SelectedVanDetails'
 import SelectedVanPrice from './components/SelectedVanPrice'
 import SelectedVanPhtos from './components/SelectedVansPhotos'
+import NotFound from './pages/NotFound'
 import './App.css'
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
       <Route path='camps' element={<Camps />} />
       <Route path='camps/:id' element={<SingleCamp />} />
       <Route path='login' element={<Login />} />
+      <Route path='*' element={<NotFound/>}/>
     </Route>
   ))
 
