@@ -1,0 +1,402 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a {
+  margin: 0;
+  padding: 0;
+  font-family: inter;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+span,
+img {
+  display: inline-block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #FFF7ED;
+}
+
+header {
+  padding: 2em;
+  display: flex;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-right: auto;
+  color: rgb(59, 73, 116);
+  letter-spacing: 2px;
+}
+
+header nav {
+  display: flex;
+}
+
+header nav>a {
+  font-size: 1.5rem;
+  color: royalblue;
+  margin-left: 2em;
+  font-weight: 600;
+  line-height: 22.923px;
+}
+
+footer {
+  padding: 1.5em;
+  display: flex;
+  background-color: rgb(41, 41, 41);
+}
+
+footer p {
+  margin: auto;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.app--container {
+  /* width: 1000px; */
+  min-height: 80.5vh;
+  margin: 0 auto;
+}
+
+.home--page {
+  width: 800px;
+  display: flex;
+  /* border: 1px solid black; */
+  min-height: 80.5vh;
+  margin: 0 auto;
+
+}
+
+.home--page--container {
+  margin: auto;
+}
+
+.home--page--container h1 {
+  font-size: 2.5em;
+  margin-bottom: 1em;
+}
+
+.home--page--container p {
+  line-height: 1.5;
+  margin-bottom: 2em;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.home--page--container a {
+  text-align: center;
+  font-family: Inter;
+  font-size: 1.3rem;
+  font-weight: 700;
+  width: 100%;
+  background-color: royalblue;
+  color: white;
+  padding: 0.5em 0;
+  border-radius: 5px;
+}
+
+.about--page img {
+  width: 100%;
+  height: 400px;
+}
+
+.about--page--container {
+  width: 800px;
+  margin: 0 auto;
+  padding: 3em 0;
+}
+
+.about--page--container h1 {
+  margin-bottom: 1em;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #343434;
+}
+
+.about--page--container p {
+  color: #343434;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 0.6em;
+}
+
+.lower--about--page {
+  border-radius: 5px;
+  background: rgb(131, 156, 230);
+  padding: 2em;
+}
+
+.lower--about--page h2 {
+  color: #161616;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.lower--about--page a {
+  border-radius: 10px;
+  background: #161616;
+  font-weight: 700;
+  padding: 0.6em 2em;
+  color: white;
+  margin-top: 2em;
+}
+
+.CampsPageCampItem {
+  width: 300px;
+}
+
+.CampsPageCampItem img {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.CampsPageCampItem h3,
+.CampsPageCampItem h4 {
+  color: #161616;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 31.662px;
+}
+
+.CampsPageCampItem .details {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0;
+}
+
+.CampsPageCampItem span {
+  color: #FFEAD0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 31.662px;
+  padding: 0.6em 2em;
+}
+
+.camps--page {
+  width: 1000px;
+  /* border: 1px solid black; */
+  margin: 0 auto;
+}
+
+.camps--page--container {
+  display: flex;
+  gap: 3em;
+  flex-wrap: wrap;
+}
+
+.single--camp--page {
+  width: 50%;
+  margin: 0 auto;
+  padding: 3em 0;
+}
+
+.single--camp--page--container img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.single--camp--page--container span {
+  color: #FFEAD0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 31.662px;
+  background-color: rgb(158, 135, 102);
+  padding: 0.5em 2em;
+  border-radius: 5px;
+  margin-top: 1.5em;
+}
+
+.single--camp--page--container h1 {
+  color: #161616;
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 33.652px;
+  margin-top: 1em;
+}
+
+.single--camp--page--container h3 {
+  color: #161616;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 44.152px;
+  margin-top: 1.5em;
+}
+
+.single--camp--page--container p {
+  color: #161616;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23.919px;
+  margin-top: 1em;
+}
+
+.single--camp--page--container a {
+  color: #FFF;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 31.662px;
+  padding: 0.5em;
+  width: 100%;
+  background-color: rgb(33, 33, 62);
+  margin-top: 2em;
+  border-radius: 5px;
+}
+
+.host--layout {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.host--layout nav {
+  margin-bottom: 2em;
+}
+
+.host--layout nav>a {
+  color: royalblue;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 22.923px;
+  margin-right: 3em;
+}
+
+.host--camp--item {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  background: #FFF;
+  padding: 2em;
+}
+
+.host--camp--item img {
+  width: 150px;
+  margin-right: 4em;
+  border-radius: 5px;
+}
+
+.host--camp--item .info>h3 {
+  color: #161616;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 31.662px;
+}
+
+.host--camp--item .info>h4 {
+  color: #4D4D4D;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 31.662px;
+}
+
+.host--camps--container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.host--camp--details .top--section {
+  display: flex;
+  align-items: center;
+}
+
+.host--camp--details .top--section img {
+  width: 400px;
+  margin-right: 2em;
+  border-radius: 5px;
+}
+
+.host--camp--details .top--section span {
+  color: #FFEAD0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 25.783px;
+  padding: 0.5em 0;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.host--camp--details .top--section h2 {
+  color: #161616;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 27.404px;
+}
+
+.top--section .text--section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.host--camp--details .top--section h3 {
+  color: #4D4D4D;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 35.954px;
+}
+
+.host--camp--details nav {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.selected--van--photo img {
+  width: 300px;
+}
+
+.price {
+  color: #4D4D4D;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 21.46px;
+}
+
+.selected--van--details p {
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.light--text {
+  color: #4D4D4D;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 21.46px;
+}
+
+.active--style {
+  text-decoration: underline;
+}
+
+.back--link {
+  margin-bottom: 1em;
+  font-size: 1.2rem;
+}
+
+.back--link:hover, .back--link--text:hover {
+  text-decoration: underline;
+}
