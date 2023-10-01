@@ -397,6 +397,42 @@ footer p {
   font-size: 1.2rem;
 }
 
-.back--link:hover, .back--link--text:hover {
+.back--link:hover,
+.back--link--text:hover {
   text-decoration: underline;
+}
+
+.not--found--page {
+  width: 1000px;
+  min-height: 80.5vh;
+  margin: 0 auto;
+  display: flex;
+}
+
+.not--found--container {
+  margin: auto;
+  width: 60%;
+}
+
+.not--found--container h1 {
+  color: #161616;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 42px;
+}
+
+.not--found--container a {
+  border-radius: 4.983px;
+  background: royalblue;
+  font-size: 1.3rem;
+  padding: 0.7em 0;
+  color: #FFF;
+  text-align: center;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.not--found--container a:hover {
+  background-color: rgb(26, 56, 145);
 }
