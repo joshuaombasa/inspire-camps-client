@@ -13,6 +13,11 @@ export default function HostCampDetails({camp}) {
     if (!hostCamp) {
         return <h1>Loading...</h1>
     }
+
+    const styles = {
+        backgroundColor : hostCamp.type === "simple" ? "#115E59"  :  hostCamp.type === "luxury" ? "goldenrod" : "#FFCC8D"
+    }
+    
     return (
         <div className="host--camp--details">
             <Link 
@@ -24,7 +29,7 @@ export default function HostCampDetails({camp}) {
             <div className="top--section">
                 <img src={hostCamp.imageUrl} alt="" />
                 <div className="text--section">
-                    <span>{hostCamp.type}</span>
+                    <span style={styles}>{hostCamp.type}</span>
                     <h2>{hostCamp.name}</h2>
                     <h3>${hostCamp.price}/day</h3>
                 </div>
