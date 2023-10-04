@@ -6,6 +6,8 @@ export default function Camps() {
 
     const [camps, setCamps] = React.useState([])
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
+
     const [searchParams, setSearchParams] = useSearchParams()
 
     React.useEffect(() => {
@@ -16,7 +18,7 @@ export default function Camps() {
                 setCamps(data)
                 console.log(data)
             } catch (error) {
-                console.log(error)
+                setError(error)
             } finally {
                 setLoading(false)
             }
@@ -28,6 +30,12 @@ export default function Camps() {
     if (loading) {
         return (
             <h1>Loading..</h1>
+        )
+    }
+
+    if (error) {
+        return (
+            <pre>Error : {error.message}</pre>
         )
     }
 
