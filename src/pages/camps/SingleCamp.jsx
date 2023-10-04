@@ -7,29 +7,37 @@ export default function SingleCamp() {
     const { id } = useParams()
 
     const [currentCamp, setCurrentCamp] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     const location = useLocation()
     // console.log(location.state)
 
     React.useEffect(() => {
         async function fetchSingleCamp() {
-            const data = await getSingleCamp(id)
-            setCurrentCamp(data)
+            setLoading(true)
+            try {
+                const data = await getSingleCamp(id)
+                setCurrentCamp(data)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setLoading(false)
+            }
         }
         fetchSingleCamp()
     }, [])
 
-    const path = location.state.search ?  `?${location.state.search}` : ""
+    const path = location.state.search ? `?${location.state.search}` : ""
 
     const backText = location.state.typeFilter ? location.state.typeFilter : "all"
 
 
-    if (!currentCamp) {
+    if (loading) {
         return <h1>Loading...</h1>
     }
 
     const styles = {
-        backgroundColor : currentCamp.type === "simple" ? "#115E59"  :  currentCamp.type === "luxury" ? "goldenrod" : "#FFCC8D"
+        backgroundColor: currentCamp.type === "simple" ? "#115E59" : currentCamp.type === "luxury" ? "goldenrod" : "#FFCC8D"
     }
 
 
