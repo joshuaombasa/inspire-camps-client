@@ -6,7 +6,7 @@ import { getHostCamps } from "../../api";
 export default function HostCamps() {
     const [hostCamps, setHostCamps] = React.useState([])
     const [loading, setLoading] = useState(false)
-
+    const [error, setError] = useState(null)
 
     React.useEffect(() => {
         async function fetchHostCamps() {
@@ -15,7 +15,7 @@ export default function HostCamps() {
                 const data = await getHostCamps()
                 setHostCamps(data)
             } catch (error) {
-                console.log(error)
+                setError(error)
             } finally {
                 setLoading(false)
             }
@@ -23,9 +23,15 @@ export default function HostCamps() {
         fetchHostCamps()
     }, [])
 
-    if (hostCamps.length === 0) {
+    if (loading) {
         return (
             <h1>Loading...</h1>
+        )
+    }
+
+    if (error) {
+        return (
+            <pre>Error : {error.message}</pre>
         )
     }
 
