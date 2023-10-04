@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import CampsPageCampItem from "../../components/CampsPageCampItem";
 import { useSearchParams } from "react-router-dom";
 import { getCamps } from "../../api";
 export default function Camps() {
 
     const [camps, setCamps] = React.useState([])
+    const [loading, setLoading] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
 
     React.useEffect(() => {
-        async function fetchCamps () {
-            const data = await getCamps()
-            setCamps(data)
-            console.log(data)
+        async function fetchCamps() {
+            setLoading(true)
+            try {
+                const data = await getCamps()
+                setCamps(data)
+                console.log(data)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setLoading(false)
+            }
         }
 
         fetchCamps()
     }, [])
 
-    if (camps.length === 0) {
+    if (loading) {
         return (
             <h1>Loading..</h1>
         )
@@ -28,7 +36,7 @@ export default function Camps() {
         if (value === null) {
             sp.delete(type)
         } else {
-            sp.set(type,value)
+            sp.set(type, value)
         }
 
         setSearchParams(sp)
@@ -36,32 +44,32 @@ export default function Camps() {
 
     const typeFilter = searchParams.get("type")
 
-    const filteredCamps = typeFilter 
-    ? camps.filter(camp => camp.type === typeFilter)
-    : camps 
+    const filteredCamps = typeFilter
+        ? camps.filter(camp => camp.type === typeFilter)
+        : camps
 
     const imgElements = filteredCamps.map(camp => (
-        <CampsPageCampItem 
-           key={camp.id} 
-           camp={camp} 
-           typeFilter={typeFilter} 
-           search={searchParams.toString()}
+        <CampsPageCampItem
+            key={camp.id}
+            camp={camp}
+            typeFilter={typeFilter}
+            search={searchParams.toString()}
         />
     ))
     return (
         <div className="camps--page">
             <nav className="camps--filter">
                 <button
-                  onClick={() => generateNewSerchParams("type", "simple")}
+                    onClick={() => generateNewSerchParams("type", "simple")}
                 >Simple</button>
                 <button
-                  onClick={() => generateNewSerchParams("type", "luxury")}
+                    onClick={() => generateNewSerchParams("type", "luxury")}
                 >Luxury</button>
                 <button
-                  onClick={() => generateNewSerchParams("type", "rustic")}
+                    onClick={() => generateNewSerchParams("type", "rustic")}
                 >rustic</button>
                 <button
-                  onClick={() => generateNewSerchParams("type", null)}
+                    onClick={() => generateNewSerchParams("type", null)}
                 >Clear filter</button>
             </nav>
             <div className="camps--page--container">
