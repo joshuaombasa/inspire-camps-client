@@ -1,18 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import HostCampItem from "../../components/HostCampItem";
 import { getHostCamps } from "../../api";
 
 export default function HostCamps() {
     const [hostCamps, setHostCamps] = React.useState([])
+    const [loading, setLoading] = useState(false)
+
 
     React.useEffect(() => {
         async function fetchHostCamps() {
-            const data = await getHostCamps()
-            setHostCamps(data)
+            setLoading(true)
+            try {
+                const data = await getHostCamps()
+                setHostCamps(data)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setLoading(false)
+            }
         }
         fetchHostCamps()
-    },[])
+    }, [])
 
     if (hostCamps.length === 0) {
         return (
@@ -21,12 +30,12 @@ export default function HostCamps() {
     }
 
     const hostCampElements = hostCamps.map(camp => (
-        <HostCampItem key={camp.id} camp={camp}/>
+        <HostCampItem key={camp.id} camp={camp} />
     ))
 
     return (
         <div className="host--camps--container">
-        {hostCampElements}
+            {hostCampElements}
         </div>
     )
 }
