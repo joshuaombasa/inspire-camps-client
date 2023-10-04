@@ -1,18 +1,20 @@
 import React from "react";
 import CampsPageCampItem from "../../components/CampsPageCampItem";
 import { useSearchParams } from "react-router-dom";
+import { getCamps } from "../../api";
 export default function Camps() {
 
     const [camps, setCamps] = React.useState([])
     const [searchParams, setSearchParams] = useSearchParams()
 
     React.useEffect(() => {
-        fetch("http://localhost:3000/api/camps")
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                setCamps(data)
-            })
+        async function fetchCamps () {
+            const data = await getCamps()
+            setCamps(data)
+            console.log(data)
+        }
+
+        fetchCamps()
     }, [])
 
     if (camps.length === 0) {
