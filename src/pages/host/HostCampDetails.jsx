@@ -5,7 +5,8 @@ import { getSingleHostCamp } from "../../api";
 export default function HostCampDetails({ camp }) {
     const { id } = useParams()
     const [hostCamp, setHostCamp] = React.useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
 
     React.useEffect(() => {
@@ -15,7 +16,7 @@ export default function HostCampDetails({ camp }) {
                 const data = await getSingleHostCamp(id)
                 setHostCamp(data)
             } catch (error) {
-                console.log(error)
+                setError(error)
             } finally {
                 setLoading(false)
             }
@@ -23,8 +24,14 @@ export default function HostCampDetails({ camp }) {
         fetchHostCamp()
     }, [])
 
-    if (!hostCamp) {
+    if (loading) {
         return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return (
+            <pre>Error : {error.message}</pre>
+        )
     }
 
     const styles = {
