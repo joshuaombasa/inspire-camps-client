@@ -19,9 +19,9 @@ import HostCamps from './pages/host/HostCamps'
 import Income from './pages/host/Income'
 import Reviews from './pages/host/Reviews'
 import HostCampDetails from './pages/host/HostCampDetails'
-import SelectedVanDetails from './components/SelectedVanDetails'
-import SelectedVanPrice from './components/SelectedVanPrice'
-import SelectedVanPhtos from './components/SelectedVansPhotos'
+import SelectedCampDetails from './components/SelectedCampDetails'
+import SelectedCampPrice from './components/SelectedCampPrice'
+import SelectedCampPhotos from './components/SelectedCampPhotos'
 import NotFound from './pages/NotFound'
 import './App.css'
 
@@ -36,9 +36,9 @@ function App() {
         <Route path='income' element={<Income />} />
         <Route path='camps' element={<HostCamps />} />
         <Route path='camps/:id' element={<HostCampDetails />} >
-          <Route index element={<SelectedVanDetails />} />
-          <Route path='pricing' element={<SelectedVanPrice />} />
-          <Route path='photos' element={<SelectedVanPhtos />} />
+          <Route index element={<SelectedCampDetails />} />
+          <Route path='pricing' element={<SelectedCampPrice />} />
+          <Route path='photos' element={<SelectedCampPhotos />} />
         </Route>
         <Route path='reviews' element={<Reviews />} />
       </Route>
