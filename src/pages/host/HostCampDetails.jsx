@@ -1,33 +1,42 @@
-import React from "react";
+import React, {useState} from "react";
 import { useParams, NavLink, Link, Outlet } from "react-router-dom";
 import { getSingleHostCamp } from "../../api";
 
-export default function HostCampDetails({camp}) {
+export default function HostCampDetails({ camp }) {
     const { id } = useParams()
     const [hostCamp, setHostCamp] = React.useState(null)
+    const [loading, setLoading] = useState(false)
+
 
     React.useEffect(() => {
         async function fetchHostCamp() {
-            const data = await getSingleHostCamp(id)
-            setHostCamp(data)
+            setLoading(true)
+            try {
+                const data = await getSingleHostCamp(id)
+                setHostCamp(data)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setLoading(false)
+            }
         }
         fetchHostCamp()
-    }, []) 
+    }, [])
 
     if (!hostCamp) {
         return <h1>Loading...</h1>
     }
 
     const styles = {
-        backgroundColor : hostCamp.type === "simple" ? "#115E59"  :  hostCamp.type === "luxury" ? "goldenrod" : "#FFCC8D"
+        backgroundColor: hostCamp.type === "simple" ? "#115E59" : hostCamp.type === "luxury" ? "goldenrod" : "#FFCC8D"
     }
-    
+
     return (
         <div className="host--camp--details">
-            <Link 
-               className="back--link"
-               relative="path"
-               to=".."
+            <Link
+                className="back--link"
+                relative="path"
+                to=".."
             >&larr; <span className="back--link--text"
             >Back to all camps</span></Link>
             <div className="top--section">
@@ -39,21 +48,21 @@ export default function HostCampDetails({camp}) {
                 </div>
             </div>
             <nav>
-                <NavLink 
-                      to="."
-                      end
-                      className={({isActive}) => isActive === true ? "active--style" : "" }
+                <NavLink
+                    to="."
+                    end
+                    className={({ isActive }) => isActive === true ? "active--style" : ""}
                 >Details</NavLink>
-                <NavLink 
-                      to="pricing"
-                      className={({isActive}) => isActive === true ? "active--style" : "" }
+                <NavLink
+                    to="pricing"
+                    className={({ isActive }) => isActive === true ? "active--style" : ""}
                 >Pricing</NavLink>
-                <NavLink 
-                      to="photos"
-                      className={({isActive}) => isActive === true ? "active--style" : "" }
+                <NavLink
+                    to="photos"
+                    className={({ isActive }) => isActive === true ? "active--style" : ""}
                 >Photos</NavLink>
             </nav>
-            <Outlet context={hostCamp}/>
+            <Outlet context={hostCamp} />
         </div>
     )
 }
