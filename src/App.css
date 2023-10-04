@@ -191,7 +191,8 @@ footer p {
   font-size: 1.3rem;
   font-weight: 600;
   line-height: 31.662px;
-  padding: 0.6em 2em;
+  padding: 0.5em 2em;
+  border-radius: 5px;
 }
 
 .camps--page {
@@ -204,6 +205,7 @@ footer p {
   display: flex;
   gap: 3em;
   flex-wrap: wrap;
+  padding: 4em 0;
 }
 
 .single--camp--page {
@@ -218,12 +220,11 @@ footer p {
 }
 
 .single--camp--page--container span {
-  color: #FFEAD0;
+  color: #FFF;
   text-align: center;
   font-size: 1.3rem;
   font-weight: 600;
   line-height: 31.662px;
-  background-color: rgb(158, 135, 102);
   padding: 0.5em 2em;
   border-radius: 5px;
   margin-top: 1.5em;
@@ -337,7 +338,7 @@ footer p {
   line-height: 25.783px;
   padding: 0.5em 0;
   border-radius: 8px;
-  border: 1px solid black;
+  color: white;
 }
 
 .host--camp--details .top--section h2 {
@@ -367,6 +368,7 @@ footer p {
 
 .selected--van--photo img {
   width: 300px;
+  margin-right: auto;
 }
 
 .price {
@@ -436,3 +438,132 @@ footer p {
 .not--found--container a:hover {
   background-color: rgb(26, 56, 145);
 }
+
+.login--page {
+  width: 800px;
+  min-height: 80vh;
+  margin: 0 auto;
+  display: flex;
+}
+
+.login--page--container {
+  margin: auto;
+  width: 100%;
+}
+
+.login--page--container h2 {
+  color: #161616;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 2em;
+}
+
+.login--page--container input {
+  border: 1px solid #D1D5DB;
+  background: #FFF;
+  padding: 0.5em 2em;
+  font-size: 1.4rem;
+  border: none;
+}
+
+.login--page--container input:focus {
+  background-color: white;
+  outline: none;
+  border: 1px solid #D1D5DB;
+
+}
+
+.login--page--container p {
+  color: #161616;
+text-align: center;
+font-size: 1.3rem;
+font-weight: 500;
+line-height: 24px; 
+}
+
+.login--page--container span {
+  color: rgb(94, 120, 197);
+  margin-top: 2em;
+}
+
+.login--form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login--form .input--top {
+  border-radius: 6px 6px 0px 0px;
+  border: 1px solid #D1D5DB;
+}
+
+.login--form .input--top:focus {
+  border-bottom: none;
+}
+
+.login--form .input--bottom {
+  border-radius: 0px 0px 6px 6px;
+  border: 1px solid #D1D5DB;
+  border-top: none;
+}
+
+.login--form .input--bottom:focus {
+  border-top: none;
+}
+
+.login--form button {
+  border-top: none;
+  border-radius: 6px;
+  padding: 0.6em 0;
+  font-size: 1.3rem;
+  margin-top: 2em;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(50, 62, 99);
+  border: none;
+}
+
+.selected--van--photo {
+  display: flex;
+}
+
+.edit--icon {
+  font-size: 2rem;
+  color: royalblue;
+}
+
+.edit--icon:hover {
+  color: rgb(4, 4, 85);
+}
+
+.edit--container span {
+  font-size: 1.5rem;
+  color: rgb(94, 120, 197);
+  /* text-decoration: underline; */
+  margin-right: 0.5em;
+}
+
+.edit--container span:hover {
+  color: rgb(4, 4, 85);
+}
+
+.edit--container {
+  display: flex;
+  align-items: center;
+  width: 10%;
+}
+
+.camps--filter button {
+  color: #4D4D4D;
+text-align: center;
+font-size: 1.3rem;
+font-weight: 500;
+line-height: 23.919px; 
+background-color: rgb(241, 242, 245);
+border: none;
+padding: 0.5em 2em;
+margin-right: 2em;
+margin-bottom: 2em;
+}
+
