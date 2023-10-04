@@ -8,6 +8,7 @@ export default function SingleCamp() {
 
     const [currentCamp, setCurrentCamp] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     const location = useLocation()
     // console.log(location.state)
@@ -19,7 +20,7 @@ export default function SingleCamp() {
                 const data = await getSingleCamp(id)
                 setCurrentCamp(data)
             } catch (error) {
-                console.log(error)
+                setError(error)
             } finally {
                 setLoading(false)
             }
@@ -34,6 +35,12 @@ export default function SingleCamp() {
 
     if (loading) {
         return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return (
+            <pre>Error : {error.message}</pre>
+        )
     }
 
     const styles = {
