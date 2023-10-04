@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
+import { getSingleCamp } from "../../api";
+
 export default function SingleCamp() {
 
     const { id } = useParams()
@@ -10,11 +12,11 @@ export default function SingleCamp() {
     // console.log(location.state)
 
     React.useEffect(() => {
-        fetch(`http://localhost:3000/api/camps/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setCurrentCamp(data)
-            })
+        async function fetchSingleCamp() {
+            const data = await getSingleCamp(id)
+            setCurrentCamp(data)
+        }
+        fetchSingleCamp()
     }, [])
 
     const path = location.state.search ?  `?${location.state.search}` : ""
