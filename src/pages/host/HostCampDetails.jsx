@@ -1,13 +1,17 @@
 import React from "react";
 import { useParams, NavLink, Link, Outlet } from "react-router-dom";
+import { getSingleHostCamp } from "../../api";
+
 export default function HostCampDetails({camp}) {
-    const {id} = useParams()
+    const { id } = useParams()
     const [hostCamp, setHostCamp] = React.useState(null)
 
     React.useEffect(() => {
-        fetch(`http://localhost:3000/api/camps/${id}`)
-             .then(res => res.json())
-             .then(data => setHostCamp(data))
+        async function fetchHostCamp() {
+            const data = await getSingleHostCamp(id)
+            setHostCamp(data)
+        }
+        fetchHostCamp()
     }, []) 
 
     if (!hostCamp) {
