@@ -567,3 +567,19 @@ margin-right: 2em;
 margin-bottom: 2em;
 }
 
+.error--page {
+  width: 50%;
+  margin:  0 auto;
+}
+
+.error--page h1 {
+  font-size: 2rem;
+  color: #343434;
+  text-align: center;
+}
+
+.error--page pre {
+  font-size: 1.5rem;
+  color: #4D4D4D;
+  text-align: center;
+}
