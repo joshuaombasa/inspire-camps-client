@@ -1,37 +1,38 @@
 import React, { useState } from "react";
 import CampsPageCampItem from "../../components/CampsPageCampItem";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLoaderData } from "react-router-dom";
 import { getCamps } from "../../api";
-export default function Camps() {
 
-    const [camps, setCamps] = React.useState([])
+export function loader() {
+    return getCamps()
+}
+
+export default function Camps() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const camps = useLoaderData()
+ 
 
     const [searchParams, setSearchParams] = useSearchParams()
 
-    React.useEffect(() => {
-        async function fetchCamps() {
-            setLoading(true)
-            try {
-                const data = await getCamps()
-                setCamps(data)
-                console.log(data)
-            } catch (error) {
-                setError(error)
-            } finally {
-                setLoading(false)
-            }
-        }
+    // React.useEffect(() => {
+    //     async function fetchCamps() {
+    //         setLoading(true)
+    //         try {
+    //             const data = await getCamps()
+    //             setCamps(data)
+               
+    //         } catch (error) {
+    //             setError(error)
+    //         } finally {
+    //             setLoading(false)
+    //         }
+    //     }
 
-        fetchCamps()
-    }, [])
+    //     fetchCamps()
+    // }, [])
 
-    if (loading) {
-        return (
-            <h1>Loading..</h1>
-        )
-    }
+ 
 
     if (error) {
         return (
