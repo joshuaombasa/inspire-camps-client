@@ -1,32 +1,32 @@
 import React, {useState} from "react";
-import { useParams, NavLink, Link, Outlet } from "react-router-dom";
+import { useParams, NavLink, Link, Outlet , useLoaderData} from "react-router-dom";
 import { getSingleHostCamp } from "../../api";
 
+export function loader({ params }) {
+    return getSingleHostCamp(params.id)
+}
+
 export default function HostCampDetails({ camp }) {
-    const { id } = useParams()
-    const [hostCamp, setHostCamp] = React.useState(null)
-    const [loading, setLoading] = useState(true)
+    const hostCamp = useLoaderData()
     const [error, setError] = useState(null)
 
 
-    React.useEffect(() => {
-        async function fetchHostCamp() {
-            setLoading(true)
-            try {
-                const data = await getSingleHostCamp(id)
-                setHostCamp(data)
-            } catch (error) {
-                setError(error)
-            } finally {
-                setLoading(false)
-            }
-        }
-        fetchHostCamp()
-    }, [])
+    // React.useEffect(() => {
+    //     async function fetchHostCamp() {
+    //         setLoading(true)
+    //         try {
+    //             const data = await getSingleHostCamp(id)
+    //             setHostCamp(data)
+    //         } catch (error) {
+    //             setError(error)
+    //         } finally {
+    //             setLoading(false)
+    //         }
+    //     }
+    //     fetchHostCamp()
+    // }, [])
 
-    if (loading) {
-        return <h1>Loading...</h1>
-    }
+  
 
     if (error) {
         return (
