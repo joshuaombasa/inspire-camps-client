@@ -13,7 +13,6 @@ export default function SingleCamp() {
     const currentCamp = useLoaderData()
 
     const location = useLocation()
-    // console.log(location.state)
 
     // React.useEffect(() => {
     //     async function fetchSingleCamp() {
@@ -30,9 +29,9 @@ export default function SingleCamp() {
     //     fetchSingleCamp()
     // }, [])
 
-    const path = location.state.search ? `?${location.state.search}` : ""
+    const path = location.state ? `?${location.state.search}` : ""
 
-    const backText = location.state.typeFilter ? location.state.typeFilter : "all"
+    const backText = location.state ? location.state.typeFilter : "all"
 
 
 
