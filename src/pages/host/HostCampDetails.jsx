@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import { useParams, NavLink, Link, Outlet , useLoaderData} from "react-router-dom";
 import { getSingleHostCamp } from "../../api";
+import { authRequired } from "../../utils";
 
-export function loader({ params }) {
+export async function loader({ params }) {
+    await authRequired()
     return getSingleHostCamp(params.id)
 }
 
