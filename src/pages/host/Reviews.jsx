@@ -4,6 +4,7 @@ import { authRequired } from "../../utils";
 
 export async function loader() {
     await authRequired()
+    return null
 }
 
 export default function Reviews() {
