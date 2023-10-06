@@ -2,8 +2,10 @@ import React, {useState} from "react";
 import { Link, useLoaderData} from "react-router-dom";
 import HostCampItem from "../../components/HostCampItem";
 import { getHostCamps } from "../../api";
+import { authRequired } from "../../utils";
 
-export function loader() {
+export async function loader() {
+    await authRequired()
     return getHostCamps()
 }
 
