@@ -14,10 +14,10 @@ import Camps, { loader as campsLoader } from './pages/camps/Camps'
 import Login from './pages/Login'
 import SingleCamp, { loader as singleCampLoader } from './pages/camps/SingleCamp'
 import HostLayout from './components/HostLayout'
-import Dashboard from './pages/host/Dashboard'
+import Dashboard, {loader as dashboardLoader} from './pages/host/Dashboard'
 import HostCamps, { loader as hostCampsLoader } from './pages/host/HostCamps'
-import Income from './pages/host/Income'
-import Reviews from './pages/host/Reviews'
+import Income, {loader as hostIncomeLoader} from './pages/host/Income'
+import Reviews, {loader as hostReviewsLoader} from  './pages/host/Reviews'
 import HostCampDetails, { loader as hostCampDetailsLoader } from './pages/host/HostCampDetails'
 import SelectedCampDetails from './components/SelectedCampDetails'
 import SelectedCampPrice from './components/SelectedCampPrice'
@@ -34,7 +34,7 @@ function App() {
       <Route index element={<Home />} />
       <Route path='about' element={<About />} />
       <Route path='host' element={<HostLayout />}>
-        <Route index element={<Dashboard />} />
+        <Route index element={<Dashboard />} loader={dashboardLoader} />
         <Route path='income' element={<Income />} />
         <Route path='camps'
           element={<HostCamps />}
