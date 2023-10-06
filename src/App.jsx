@@ -35,7 +35,7 @@ function App() {
       <Route path='about' element={<About />} />
       <Route path='host' element={<HostLayout />}>
         <Route index element={<Dashboard />} loader={dashboardLoader} />
-        <Route path='income' element={<Income />} />
+        <Route path='income' element={<Income />} loader={hostIncomeLoader}/>
         <Route path='camps'
           element={<HostCamps />}
           loader={hostCampsLoader}
@@ -46,7 +46,7 @@ function App() {
           <Route path='pricing' element={<SelectedCampPrice />} />
           <Route path='photos' element={<SelectedCampPhotos />} />
         </Route>
-        <Route path='reviews' element={<Reviews />} />
+        <Route path='reviews' element={<Reviews />} loader={hostReviewsLoader}/>
       </Route>
       <Route path='camps' element={<Camps />} loader={campsLoader} errorElement={<Error/>}/>
       <Route path='camps/:id' element={<SingleCamp />} loader={singleCampLoader}  errorElement={<Error/>}/>
