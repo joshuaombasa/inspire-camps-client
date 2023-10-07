@@ -1,4 +1,5 @@
 import React from "react";
+import { loginUser } from "../api";
 
 export default function Login() {
 
@@ -19,7 +20,15 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log(formData)
+        async function handleLogin() {
+            try {
+                const data = await loginUser(formData)
+                console.log(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        handleLogin()
     }
 
     return (
