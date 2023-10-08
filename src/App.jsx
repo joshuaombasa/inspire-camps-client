@@ -11,7 +11,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Host from './pages/Host'
 import Camps, { loader as campsLoader } from './pages/camps/Camps'
-import Login from './pages/Login'
+import Login, {loader as loginLoader, action as loginAction} from './pages/Login'
 import SingleCamp, { loader as singleCampLoader } from './pages/camps/SingleCamp'
 import HostLayout from './components/HostLayout'
 import Dashboard, {loader as dashboardLoader} from './pages/host/Dashboard'
@@ -50,7 +50,7 @@ function App() {
       </Route>
       <Route path='camps' element={<Camps />} loader={campsLoader} errorElement={<Error/>}/>
       <Route path='camps/:id' element={<SingleCamp />} loader={singleCampLoader}  errorElement={<Error/>}/>
-      <Route path='login' element={<Login />} />
+      <Route path='login' element={<Login />} loader={loginLoader} action={loginAction}/>
       <Route path='*' element={<NotFound />} />
     </Route>
   ))
