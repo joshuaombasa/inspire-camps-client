@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api";
 
 export default function Login() {
@@ -7,6 +8,10 @@ export default function Login() {
         email: "",
         password: "",
     })
+
+    const [error, setError] = React.useState(null)
+
+    const navigate = useNavigate()
 
     function handleChange(event) {
         const { name, value } = event.target
@@ -20,12 +25,14 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault()
+        setError(null)
         async function handleLogin() {
             try {
                 const data = await loginUser(formData)
                 console.log(data)
+                navigate("/host")
             } catch (error) {
-                console.log(error)
+                setError(error)
             }
         }
         handleLogin()
@@ -35,6 +42,7 @@ export default function Login() {
         <div className="login--page">
             <div className="login--page--container">
                 <h2>Sign in to your account</h2>
+                {error && <h3 className="red">{error.message}</h3>}
                 <form onSubmit={handleSubmit} className="login--form">
                     <input
                         className="input--top"
