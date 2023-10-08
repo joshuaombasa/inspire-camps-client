@@ -1,6 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { loginUser } from "../api";
+
+export function loader({request}) {
+    // const text = request
+
+}
 
 export default function Login() {
 
@@ -10,6 +15,8 @@ export default function Login() {
     })
 
     const [error, setError] = React.useState(null)
+    const [searchParams, setSearchParams] = useSearchParams()
+    const message = searchParams.get("message")
 
     const navigate = useNavigate()
 
@@ -30,7 +37,7 @@ export default function Login() {
             try {
                 const data = await loginUser(formData)
                 console.log(data)
-                navigate("/host")
+                navigate("/host", {replace: true})
             } catch (error) {
                 setError(error)
             }
@@ -42,7 +49,8 @@ export default function Login() {
         <div className="login--page">
             <div className="login--page--container">
                 <h2>Sign in to your account</h2>
-                {error && <h3 className="red">{error.message}</h3>}
+                {message && <h3 className="red">{message}</h3>}
+                {error && <h4 className="red">{error.message}</h4>}
                 <form onSubmit={handleSubmit} className="login--form">
                     <input
                         className="input--top"
