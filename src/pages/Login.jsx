@@ -1,10 +1,26 @@
 import React from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, Form, useActionData, redirect } from "react-router-dom";
 import { loginUser } from "../api";
 
 export function loader({request}) {
-    // const text = request
+   return null
 
+}
+
+export async function action({request}) {
+    const formData = await request.formData()
+    const email = formData.get("email")
+    const password = formData.get("password")
+    console.log({email, password})
+
+    try {
+        const data = await loginUser({email, password})
+        console.log(data)
+        throw redirect("/host")
+    } catch (error) {
+        return error
+    }
+    return null
 }
 
 export default function Login() {
@@ -14,7 +30,8 @@ export default function Login() {
         password: "",
     })
 
-    const [error, setError] = React.useState(null)
+    // const [error, setError] = React.useState(null)
+    const error = useActionData()
     const [searchParams, setSearchParams] = useSearchParams()
     const message = searchParams.get("message")
 
@@ -51,7 +68,7 @@ export default function Login() {
                 <h2>Sign in to your account</h2>
                 {message && <h3 className="red">{message}</h3>}
                 {error && <h4 className="red">{error.message}</h4>}
-                <form onSubmit={handleSubmit} className="login--form">
+                <Form method="post"  className="login--form">
                     <input
                         className="input--top"
                         type="email"
@@ -69,7 +86,7 @@ export default function Login() {
                         onChange={handleChange}
                     />
                     <button>Sign in</button>
-                </form>
+                </Form >
                 <p>Dont have an account? <span>Create one now</span></p>
             </div>
         </div>
