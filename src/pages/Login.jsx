@@ -11,16 +11,21 @@ export async function action({ request }) {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
-    console.log({ email, password })
+
+    const url = new URL(request.url)
+    const searchParams = new URLSearchParams(url.search)
+    const redirectTo = searchParams.get("redirectTo") || "/host"
+    
 
     try {
         const data = await loginUser({ email, password })
         console.log(data)
-        throw redirect("/host")
+        localStorage.setItem("loggedIn", true)
+        throw redirect(redirectTo)
     } catch (error) {
         return error
     }
-    return null
+
 }
 
 export default function Login() {
@@ -36,32 +41,21 @@ export default function Login() {
     const message = searchParams.get("message")
 
     const navigate = useNavigation()
-    console.log(navigate.state)
 
-    function handleChange(event) {
-        const { name, value } = event.target
-        setFormData(prevFormData => (
-            {
-                ...prevFormData,
-                [name]: value
-            }
-        ))
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault()
-        setError(null)
-        async function handleLogin() {
-            try {
-                const data = await loginUser(formData)
-                console.log(data)
-                navigate("/host", { replace: true })
-            } catch (error) {
-                setError(error)
-            }
-        }
-        handleLogin()
-    }
+    // function handleSubmit(event) {
+    //     event.preventDefault()
+    //     setError(null)
+    //     async function handleLogin() {
+    //         try {
+    //             const data = await loginUser(formData)
+    //             console.log(data)
+    //             navigate("/host", { replace: true })
+    //         } catch (error) {
+    //             setError(error)
+    //         }
+    //     }
+    //     handleLogin()
+    // }
 
     return (
         <div className="login--page">
@@ -75,16 +69,14 @@ export default function Login() {
                         type="email"
                         placeholder="Email address"
                         name="email"
-                        value={formData.email}
-                        onChange={handleChange}
+                        required
                     />
                     <input
                         type="password"
                         className="input--bottom"
                         name="password"
                         placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
+                        required
                     />
                     <button disabled={navigate.state === "submitting"}>
                         {navigate.state === "submitting" ? "Logging in.." : "Log in"}
