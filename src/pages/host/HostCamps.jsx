@@ -4,8 +4,8 @@ import HostCampItem from "../../components/HostCampItem";
 import { getHostCamps } from "../../api";
 import { authRequired } from "../../utils";
 
-export async function loader() {
-    await authRequired()
+export async function loader({request}) {
+    await authRequired(request)
     return getHostCamps()
 }
 
