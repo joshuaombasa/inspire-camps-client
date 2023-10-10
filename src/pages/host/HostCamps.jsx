@@ -1,16 +1,16 @@
-import React, {useState} from "react";
-import { Link, useLoaderData} from "react-router-dom";
+import React, { useState, Suspense } from "react";
+import { Link, useLoaderData, defer, Await } from "react-router-dom";
 import HostCampItem from "../../components/HostCampItem";
 import { getHostCamps } from "../../api";
 import { authRequired } from "../../utils";
 
-export async function loader({request}) {
+export async function loader({ request }) {
     await authRequired(request)
-    return getHostCamps()
+    return defer({ camps: getHostCamps() })
 }
 
 export default function HostCamps() {
-    const hostCamps = useLoaderData()
+    const hostCampsPromise = useLoaderData()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
@@ -41,13 +41,27 @@ export default function HostCamps() {
         )
     }
 
-    const hostCampElements = hostCamps.map(camp => (
-        <HostCampItem key={camp.id} camp={camp} />
-    ))
+    // const hostCampElements = hostCamps.map(camp => (
+    //     <HostCampItem key={camp.id} camp={camp} />
+    // ))
+    function renderHostCamps(hostCamps) {
+        const hostCampElements = hostCamps.map(camp => (
+            <HostCampItem key={camp.id} camp={camp} />
+        ))
+        return (
+            <div className="host--camps--container">
+                {hostCampElements}
+            </div>
+        )
+    }
 
     return (
-        <div className="host--camps--container">
-            {hostCampElements}
-        </div>
+        <>
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Await resolve={hostCampsPromise.camps}>
+                    {renderHostCamps}
+                </Await>
+            </Suspense>
+        </>
     )
 }
