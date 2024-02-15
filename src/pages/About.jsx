@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import aboutPageImg from "../assets/about--page.jpg"
+// import aboutPageImg from "../assets/about--page.jpg"
 export default function About () {
     return (
-        <div className="about--page">
-            <img src={aboutPageImg} alt="" />
+        <div data-testid="aboutPage" className="about--page">
+            {/* <img src={aboutPageImg} alt="" /> */}
             <div className="about--page--container">
                 <h1>Discover the Great Outdoors with Inspirecamps</h1>
                 <p>Welcome to your one-stop destination for unforgettable camping experiences across the country. Whether you're a seasoned explorer or a first-time camper, we've got the perfect site waiting for you in every corner of this beautiful land.</p>
