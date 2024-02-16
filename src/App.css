@@ -592,3 +592,13 @@ margin-bottom: 2em;
   line-height: 24px;
   margin-bottom: 2em;
 }
+
+.logout--btn {
+  font-size: 1.5rem;
+  color: royalblue;
+  margin-left: 2em;
+  font-weight: 600;
+  line-height: 22.923px;
+  border: none;
+  background-color: inherit;
+}
